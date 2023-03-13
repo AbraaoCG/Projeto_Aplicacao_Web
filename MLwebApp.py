@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request, redirect, url_for
+from flask import Flask, render_template,request, redirect
 import os
 import pandas as pd
 from werkzeug.utils import secure_filename
@@ -26,10 +26,8 @@ def uploadFiles():
             if (uploaded_file.filename != ""):
                 file_path = os.path.join(app.instance_path, 'htmlfi', secure_filename(uploaded_file.filename))
                 uploaded_file.save(file_path)
-            return redirect(url_for('success'))
+            return redirect(('index'))
+
+
             
     return render_template('index.html')
-
-@app.route('/success')
-def success():
-   return 'logged in successfully'
