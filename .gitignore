@@ -1,2 +1,13 @@
+# Pastas Venv e Cache
 webAppEnv/
-__pycache__
+__pycache__/
+
+
+# Arquivos de Instancia
+
+/instance/htmlfi/*.csv
+
+# Input e Output Fortran
+
+FT_NN_data/*.txt
+FT_NN_data/*.csv

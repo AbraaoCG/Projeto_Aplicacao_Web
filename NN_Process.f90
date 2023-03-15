@@ -42,17 +42,19 @@
 
         read(1,*) clixo
 
-
-        do i = 1 , np
-            
+        ! Criar Mascara de normalização simples
+        do i = 1 , np 
             read(1,*) ( dados(i,j), j = 1,numVar)! , xlixo
-            do j = 1,numVar
+            do j = 1,numVar 
                 if(normalizeMask(j) .lt. dados(i,j)) then
                     normalizeMask(j) = dados(i,j)
                 endif
             enddo
         enddo
-        
+        ! Garantir que não haja x/0
+        do i = 1,numVar
+            if(normalizeMask(i) .eq. 0 )normalizeMask(i) = 1
+        enddo
         ! Normalizar dados
         x = dados(:,1) / normalizeMask(1)
         y = dados(:,(numVar)) / normalizeMask(numVar)

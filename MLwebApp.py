@@ -1,5 +1,4 @@
 from flask import Flask, render_template,request
-from flask_session import Session
 import os
 import pandas as pd
 import numpy as np
@@ -8,7 +7,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import plotly
-import pandas as pd
 import json
 import subprocess
 
@@ -27,7 +25,7 @@ os.makedirs(os.path.join(app.instance_path, 'htmlfi'), exist_ok=True)
 @app.route('/')
 def index(file_path = 'exampleData/exampleData2.csv'):
     inputData = pd.read_csv(file_path)
-    graphIN = getGraph(inputData)
+    graphIN = getGraph(inputData, 'Dados Importados')
     return render_template('index.html', graphIN=graphIN)
 
 @app.route('/',methods=["GET", "POST"])
