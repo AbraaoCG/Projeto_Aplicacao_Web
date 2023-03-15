@@ -15,14 +15,33 @@
             <input type = "submit" value="Upload"> 
         </form>
     </div>
-    <div id='chart' class='chart'”></div>
+    <div>
+        <div style="float: left; width: 50%" id='plotDadosOrig' class='plotDadosOrig'”></div>
+        <div style="float: left; width: 50%" id='plotPred' class='plotPred'”></div>
+    </div>
+    <div>
+        <div style="float: left; width: 50%" id='plotErro' class='plotErro'”></div>
+    </div>
+
+    
+    <div id='plotDadosOrig' class='plotDadosOrig'”></div>
 </body>
 
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 
 <script type='text/javascript'>
     var graphs = {{graphIN | safe}};
-    Plotly.plot('chart',graphs,{});
+    Plotly.plot('plotDadosOrig',graphs,{});
+</script>
+
+<script type='text/javascript'>
+    var graphs = {{graphErro | safe}};
+    Plotly.plot('plotErro',graphs,{});
+</script>
+
+<script type='text/javascript'>
+    var graphs = {{graphPred | safe}};
+    Plotly.plot('plotPred',graphs,{});
 </script>
 
 </html>
