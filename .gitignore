@@ -9,5 +9,4 @@ __pycache__/
 
 # Input e Output Fortran
 
-FT_NN_data/*.txt
-FT_NN_data/*.csv
+FT_NN_data/
