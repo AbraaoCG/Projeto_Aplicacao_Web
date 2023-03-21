@@ -10,3 +10,7 @@ __pycache__/
 # Input e Output Fortran
 
 FT_NN_data/
+
+#node_modules
+
+node_modules
