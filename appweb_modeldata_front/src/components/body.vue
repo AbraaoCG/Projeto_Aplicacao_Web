@@ -1,5 +1,5 @@
 <template>
-    <div class="body">
+    <div class="center-body">
       <div class="frame-12">
         <div class="center-top">
           <div class="topleft">
@@ -10,7 +10,6 @@
             <div class="frame-1">
               <div class="frame-9">
                 <div class="arg6"></div>
-  
                 <div class="arg1"></div>
               </div>
   
@@ -86,18 +85,17 @@
   <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
-  .body,
-  .body * {
+  .center-body,
+  .center-body * {
     box-sizing: border-box;
   }
-  .body {
+  .center-body {
     /* background: #1f2327;*/
-    background: rgb(197,226,255);
-background: linear-gradient(90deg, rgba(197,226,255,1) 0%, rgba(110,124,131,1) 10%, rgba(86,97,102,1) 20%, rgba(61,67,70,1) 30%, rgba(22,22,22,1) 50%, rgba(25,27,28,1) 70%, rgba(26,28,30,1) 80%, rgba(28,31,34,1) 100%);
     padding: 48px 27px 0px 27px;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     gap: 39px;
+    left: 5%;
     align-items: center;
     justify-content: flex-start;
     width: relative;
@@ -117,7 +115,7 @@ background: linear-gradient(90deg, rgba(197,226,255,1) 0%, rgba(110,124,131,1) 1
     overflow-x: hidden;
   }
   .center-top {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     gap: 41px;
     align-items: flex-end;
@@ -161,7 +159,7 @@ background: linear-gradient(90deg, rgba(197,226,255,1) 0%, rgba(110,124,131,1) 1
     flex: 1;
   }
   .frame-1 {
-    background: #292e33;
+    background: rgba(41, 46, 51,0.4);/*#292e33;*/
     border-radius: 50px;
     display: flex;
     flex-direction: row;
@@ -320,7 +318,7 @@ background: linear-gradient(90deg, rgba(197,226,255,1) 0%, rgba(110,124,131,1) 1
     position: relative;
   }
   .frame-6 {
-    background: #292e33;
+    background: rgba(41, 46, 51,0.4);;
     border-radius: 50px;
     padding: 27px 25px 27px 25px;
     display: flex;
@@ -454,7 +452,7 @@ background: linear-gradient(90deg, rgba(197,226,255,1) 0%, rgba(110,124,131,1) 1
     position: relative;
   }
   .frame-13 {
-    background: #292e33;
+    background: rgba(41, 46, 51,0.4);;
     border-radius: 50px;
     padding: 10px 10px 10px 10px;
     display: flex;
@@ -469,7 +467,7 @@ background: linear-gradient(90deg, rgba(197,226,255,1) 0%, rgba(110,124,131,1) 1
     box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
   }
   .frame-2 {
-    background: #292e33;
+    background:rgba(41, 46, 51,0.4);;
     border-radius: 50px;
     padding: 10px 10px 10px 10px;
     display: flex;
@@ -484,7 +482,7 @@ background: linear-gradient(90deg, rgba(197,226,255,1) 0%, rgba(110,124,131,1) 1
     box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
   }
   .frame-3 {
-    background: #292e33;
+    background: rgba(41, 46, 51,0.4);;
     border-radius: 50px;
     padding: 10px 10px 10px 10px;
     display: flex;

@@ -50,13 +50,11 @@
     box-sizing: border-box;
   }
   .left-menu {
-    border-style:groove;
-    border-color: #c5e2ff23;
-    background: #c5e2ff77;
+    background: rgba(197, 226, 255,0.6);
     padding: 17px 0px 17px 0px;
     display: flex;
     flex-direction: column;
-    gap: 199px;
+    gap: 166px;
     align-items: center;
     justify-content: flex-start;
     width: 168px;
