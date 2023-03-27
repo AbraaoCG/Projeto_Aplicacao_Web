@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,session
 import os
 import pandas as pd
 import numpy as np
@@ -7,7 +7,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from plotly.graph_objs import *
-
 import plotly
 import json
 import subprocess
@@ -15,31 +14,42 @@ import platform
 
 
 app = Flask(__name__)
-
-# enable debugging mode
-# app.config["DEBUG"] = True
-# # app.config["SESSION_PERMANENT"] = False
-# app.config["SESSION_TYPE"] = "redis"
-# Session(app)
-
-os.makedirs(os.path.join(app.instance_path, 'htmlfi'), exist_ok=True)
+app.secret_key = str(int(np.floor(np.random.random() * np.random.random()* 10000)))
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+app.config["DEBUG"] = True
 
 
-@app.route('/')
-def index(file_path = 'exampleData/exampleData2.csv'):
-    return verifyData(file_path)
-    inputData = pd.read_csv(file_path)
-    graphIN = getGraph(inputData, 'Dados Importados')
-    return render_template('index.html', graphIN=graphIN)
+os.makedirs(os.path.join(app.instance_path), exist_ok=True)
 
 @app.route('/',methods=["GET", "POST"])
+def index(file_path = 'exampleData/exampleData2.csv'):
+    session['dataPath'] = None
+    session['plot_config'] = {}
+    setDefaultPlottyConfig()
+
+    user_IP = request.remote_addr.replace('.','_')
+    session['dataPath'] = os.path.join(app.instance_path, user_IP)
+    os.makedirs(os.path.join(app.instance_path, user_IP), exist_ok=True)
+
+    return verifyData(file_path)
+    
+def setDefaultPlottyConfig():
+        session['plot_config']['paper_bgcolor'] = 'rgba(0,0,0,0)'
+        session['plot_config']['plot_bgcolor'] = 'rgba(0,0,0,0)'
+        session['plot_config']['font_color'] = 'rgba(255,255,255,1)'
+
+@app.route('/Upload_and_run',methods=["GET", "POST"])
 
 def uploadFiles():
+    
     if request.method == 'POST':
         if request.files:
             uploaded_file = request.files['file'] # This line uses the same variable and worked fine
             if (uploaded_file.filename != ""):     
-                file_path = os.path.join(app.instance_path, 'htmlfi', secure_filename(uploaded_file.filename))
+                # file_path = os.path.join(app.instance_path, 'htmlfi', secure_filename(uploaded_file.filename))
+                file_path = os.path.join(session['dataPath'] , secure_filename(uploaded_file.filename))
+                
                 uploaded_file.save(file_path) 
                 return verifyData(file_path)
     return index()
@@ -49,9 +59,9 @@ def getGraph(data, title):
     # data = data.sort_values(xName)
     fig = px.line(data.sort_values(xName), x=xName , y=yName, title = title)
     layout = Layout(
-    paper_bgcolor='rgba(0,0,0,0)',
-    plot_bgcolor='rgba(0,0,0,0)',
-    font_color = 'rgba(255,255,255,1)',
+    paper_bgcolor= session['plot_config']['paper_bgcolor'],#'rgba(0,0,0,0)',
+    plot_bgcolor= session['plot_config']['plot_bgcolor'], # 'rgba(0,0,0,0)',
+    font_color = session['plot_config']['font_color'],  # 'rgba(255,255,255,1)',
     # title_font = 'rgba(255,255,255,1)',
     )
     fig.layout = layout
@@ -59,9 +69,9 @@ def getGraph(data, title):
 
 def getGraph_Pred(inputData,data1,data2):
     layout = Layout(
-    paper_bgcolor='rgba(0,0,0,0)',
-    plot_bgcolor='rgba(0,0,0,0)',
-    font_color = 'rgba(255,255,255,1)',
+    paper_bgcolor= session['plot_config']['paper_bgcolor'],#'rgba(0,0,0,0)',
+    plot_bgcolor= session['plot_config']['plot_bgcolor'], # 'rgba(0,0,0,0)',
+    font_color = session['plot_config']['font_color'],  # 'rgba(255,255,255,1)',
     # title_font = 'rgba(255,255,255,1)',
     )
 
