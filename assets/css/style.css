@@ -1,12 +1,3 @@
-html{
-  margin: 0;
-  background-color: #1f2327;
-  }
-  body{
-  margin: 0;
-  background-color: #1f2327;
-  }
-
 .free_dashboard, .free_dashboard * { box-sizing: border-box; }.free_dashboard {
       width: 1761px; height: 1823px;
       position: relative;
@@ -16,13 +7,13 @@ html{
       padding: 20px 0px 17px 0px;
       display: flex;
       flex-direction: column;
-      gap: 1012px;
+      gap: 942px;
       align-items: center;
       justify-content: flex-start;
-      width: 128px; height: 1834px;
+      height: 1834px;
       position: absolute; left: calc(50% - 882.5px);top: calc(50% - 921.5px);
     }
- .frame-14 {
+ .leftmenu_upper_box {
       padding: 1px 0px 1px 0px;
       display: flex;
       flex-direction: column;
@@ -62,7 +53,6 @@ align-items: center;justify-content: center
       align-items: center;
       justify-content: flex-start;
     flex-shrink: 0;
-      width: 128px; height: 471px;
       position: relative;
       overflow: hidden;
     }
@@ -77,15 +67,15 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .network3 {
+ .networkicon {
       flex-shrink: 0;
       width: 100px; height: 100px;
       position: relative;
     }
- .separator {
-      background: #58626d;
+ .separator1 {
+      background: #1f2327;
       flex-shrink: 0;
-      width: 26.67px; height: 1.05px;
+      width: 67px; height: 1.05px;
       position: relative;
     }
  .classifiericon {
@@ -99,9 +89,15 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .regressor {
+ .regressoricon {
       flex-shrink: 0;
       width: 100px; height: 100px;
+      position: relative;
+    }
+ .separator2 {
+      background: #1f2327;
+      flex-shrink: 0;
+      width: 67px; height: 1.05px;
       position: relative;
     }
  .regressionicon {
@@ -115,9 +111,15 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .classifier {
+ .classifiericon2 {
       flex-shrink: 0;
       width: 100px; height: 100px;
+      position: relative;
+    }
+ .separator3 {
+      background: #1f2327;
+      flex-shrink: 0;
+      width: 67px; height: 1.05px;
       position: relative;
     }
  .settingsicon {
@@ -128,9 +130,19 @@ align-items: center;justify-content: center
       align-items: flex-start;
       justify-content: flex-start;
     align-self: stretch;flex-shrink: 0;
-      height: 102px;
       position: relative;
       overflow: hidden;
+    }
+ .settingsicon2 {
+      flex-shrink: 0;
+      width: 100px; height: 100px;
+      position: relative;
+    }
+ .separator4 {
+      background: #1f2327;
+      flex-shrink: 0;
+      width: 67px; height: 1.05px;
+      position: relative;
     }
  .footer {
       padding: 10px 10px 10px 10px;
@@ -144,7 +156,7 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .body {
+ .bodydashboard {
       background: #1f2327;
       padding: 70px 0px 0px 0px;
       display: flex;
@@ -157,7 +169,6 @@ align-items: center;justify-content: center
  .frame-12 {
       display: flex;
       flex-direction: column;
-      left: 128px;
       gap: 39px;
       align-items: center;
       justify-content: flex-start;
@@ -173,8 +184,7 @@ align-items: center;justify-content: center
       gap: 41px;
       align-items: center;
       justify-content: center;
-      align-self: stretch;
-      flex: 1;
+    align-self: stretch;flex: 1;
       position: relative;
     }
  .topleft {
@@ -183,12 +193,12 @@ align-items: center;justify-content: center
       flex-direction: column;
       gap: 0px;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: center;
     align-self: stretch;flex-shrink: 0;
       width: 1027px;
       position: relative;
     }
- .frame-5 {
+ .args_title_box {
       padding: 11px 415px 11px 415px;
       display: flex;
       flex-direction: row;
@@ -199,24 +209,23 @@ align-items: center;justify-content: center
       height: 65px;
       position: relative;
     }
- .my-dashboard {
-      
+ .args_title_text {
       color: #ffffff;
-      text-align: center;
+      text-align: left;
       font: 400 36px 'Roboto', sans-serif;
       position: relative;
+      align-self: stretch;flex: 1;
     }
- .frame-1 {
+ .args_content {
       background: #292e33;
       border-radius: 5px;
-      margin: 5%;
-      display: inline-block;
+      display: flex;
       flex-direction: row;
       gap: 7px;
       align-items: flex-start;
       justify-content: center;
-      align-self: stretch;flex-shrink: 0;
-      
+    align-self: stretch;flex-shrink: 0;
+      height: 250px;
       position: relative;
     }
  .frame-9 {
@@ -242,14 +251,14 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .my-dashboard2 {
-      color: #969696;
+ .numepochs_text {
+      color: #ffffff;
       text-align: left;
-      font: 400 14px 'Roboto', sans-serif;
+      font: 400 24px 'Roboto', sans-serif;
       position: relative;
       align-self: stretch;flex: 1;
     }
- .inputarg6 {
+ .numepochs_box {
       padding: 10px 10px 10px 10px;
       display: flex;
       flex-direction: row;
@@ -272,7 +281,14 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .inputarg1 {
+ .learningrate_text {
+      color: #ffffff;
+      text-align: left;
+      font: 400 24px 'Roboto', sans-serif;
+      position: relative;
+      align-self: stretch;flex: 1;
+    }
+ .learningrate_box {
       padding: 10px 10px 10px 10px;
       display: flex;
       flex-direction: row;
@@ -307,7 +323,14 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .inputarg4 {
+ .activationfunction_text {
+      color: #ffffff;
+      text-align: left;
+      font: 400 24px 'Roboto', sans-serif;
+      position: relative;
+      align-self: stretch;flex: 1;
+    }
+ .activationfunction_box {
       padding: 10px 10px 10px 10px;
       display: flex;
       flex-direction: row;
@@ -366,7 +389,7 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .executar-algoritimo {
+ .exec_alg_button_dash {
       background: #27323c;
       border-radius: 8px;
       padding: 12px 20px 12px 20px;
@@ -380,21 +403,7 @@ align-items: center;justify-content: center
       box-shadow: var(--shadow-xs-box-shadow,  0px 1px 2px 0px rgba(16, 24, 40, 0.05));
       overflow: hidden;
     }
- .curtain {
-      background: #10269c;
-      opacity: 0;
-      padding: 10px 10px 10px 10px;
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      align-items: flex-start;
-      justify-content: center;
-    flex-shrink: 0;
-      width: 1px; height: 6px;
-      position: absolute; left: 0px;bottom: 0px;
-      overflow: hidden;
-    }
- .text {
+ .exec_button_text {
       color: #ffffff;
       text-align: left;
       font: var(--textmd-medium, 500 16px/24px 'Inter', sans-serif);
@@ -409,7 +418,7 @@ align-items: center;justify-content: center
     align-self: stretch;flex-shrink: 0;
       position: relative;
     }
- .frame-7 {
+ .senddata_title_box {
       padding: 0px 157px 0px 157px;
       display: flex;
       flex-direction: row;
@@ -419,13 +428,13 @@ align-items: center;justify-content: center
     align-self: stretch;flex-shrink: 0;
       position: relative;
     }
- .my-dashboard3 {
+ .senddata_title {
       color: #ffffff;
       text-align: left;
       font: 400 36px 'Roboto', sans-serif;
       position: relative;
     }
- .frame-6 {
+ .senddata_content {
       background: #292e33;
       border-radius: 5px;
       padding: 27px 25px 27px 25px;
@@ -439,7 +448,7 @@ align-items: center;justify-content: center
       position: relative;
       box-shadow:  0px 1px 4px 0px rgba(0, 0, 0, 0.20);
     }
- .displayupfile {
+ .upload_but_box {
       padding: 10px 10px 10px 10px;
       display: flex;
       flex-direction: column;
@@ -451,14 +460,7 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .selectbutton {
-      background: #414f5e;
-      border-radius: 8px;
-      box-sizing: content-box;
-      
-    }
-
- .uploadbutton {
+ .select_button_dash {
       background: #414f5e;
       border-radius: 8px;
       padding: 12px 20px 12px 20px;
@@ -472,7 +474,13 @@ align-items: center;justify-content: center
       box-shadow: var(--shadow-xs-box-shadow,  0px 1px 2px 0px rgba(16, 24, 40, 0.05));
       overflow: hidden;
     }
- .frame-8 {
+ .select_table_text {
+      color: #ffffff;
+      text-align: left;
+      font: var(--textmd-medium, 500 16px/24px 'Inter', sans-serif);
+      position: relative;
+    }
+ .datauploaded_name_box {
       padding: 0px 4px 0px 4px;
       display: flex;
       flex-direction: column;
@@ -483,7 +491,7 @@ align-items: center;justify-content: center
       position: relative;
       overflow: hidden;
     }
- .tabela-csv {
+ .datauploaded_name {
       color: #ffffff;
       text-align: left;
       font: 400 24px/24px 'Roboto', sans-serif;
@@ -495,19 +503,19 @@ align-items: center;justify-content: center
       flex-direction: column;
       gap: 48px;
       align-items: center;
-      
-      align-self: stretch;flex-shrink: 0;
+      justify-content: center;
+    align-self: stretch;flex-shrink: 0;
       height: 1420px;
       position: relative;
     }
- .my-dashboard4 {
+ .visualization_title {
       color: #ffffff;
       text-align: left;
       font: 400 36px 'Roboto', sans-serif;
       position: relative;
       width: 213px;
     }
- .visualiza--o {
+ .visualization {
       padding: 0px 48px 0px 48px;
       display: flex;
       flex-direction: column;
@@ -517,7 +525,7 @@ align-items: center;justify-content: center
     align-self: stretch;flex: 1;
       position: relative;
     }
- .frame-13 {
+ .visualization_box_1 {
       background: #292e33;
       border-radius: 10px;
       padding: 10px 10px 10px 10px;
@@ -531,7 +539,7 @@ align-items: center;justify-content: center
       position: relative;
       box-shadow:  0px 1px 4px 0px rgba(0, 0, 0, 0.20);
     }
- .frame-2 {
+ .visualization_box_2 {
       background: #292e33;
       border-radius: 10px;
       padding: 10px 10px 10px 10px;
@@ -545,7 +553,7 @@ align-items: center;justify-content: center
       position: relative;
       box-shadow:  0px 1px 4px 0px rgba(0, 0, 0, 0.20);
     }
- .frame-3 {
+ .visualization_box_3 {
       background: #292e33;
       border-radius: 10px;
       padding: 10px 10px 10px 10px;
