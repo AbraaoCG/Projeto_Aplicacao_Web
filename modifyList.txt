@@ -1,0 +1,26 @@
+
+# No Css
+
+.visualization_box_1 {
+      background: #292e33;
+      border-radius: 10px;
+      padding: 10px 10px 10px 10px;
+      display: block;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    flex: 1;
+      width: 1541px;
+      position: relative;
+      box-shadow:  0px 1px 4px 0px rgba(0, 0, 0, 0.20);
+    }
+
+
+
+# no dashCode
+
+Store('dataML_Results', storage_type='data'),
+
+
+

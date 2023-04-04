@@ -1,10 +1,11 @@
 from dash.html import Div, Button, Img
-from dash.dcc import Tabs, Tab, Input, Upload
+from dash.dcc import Tabs, Tab, Input, Upload, Store, Dropdown
 
 
 def getLayoutFormated():
     return Div(
         [
+            Store('dataML_Results', storage_type='data'),
             Div(
                 children=[
                     Div(
@@ -129,10 +130,11 @@ def getLayoutFormated():
                                                                                 id="numepochs_text",
                                                                                 className="numepochs_text",
                                                                             ),
-                                                                            Div(
-                                                                                children=[],
-                                                                                id="numepochs_box",
-                                                                                className="numepochs_box",
+                                                                            Input(
+                                                                                type="number",
+                                                                                placeholder="",
+                                                                                className="numepochs_box_input_dash",
+                                                                                id="numepochs_box_input_dash_INPUT",
                                                                             ),
                                                                         ],
                                                                         id="arg6",
@@ -147,10 +149,11 @@ def getLayoutFormated():
                                                                                 id="learningrate_text",
                                                                                 className="learningrate_text",
                                                                             ),
-                                                                            Div(
-                                                                                children=[],
-                                                                                id="learningrate_box",
-                                                                                className="learningrate_box",
+                                                                            Input(
+                                                                                type="number",
+                                                                                placeholder="",
+                                                                                className="learningrate_input_dash",
+                                                                                id="learningrate_input_dash_INPUT",
                                                                             ),
                                                                         ],
                                                                         id="arg1",
@@ -171,10 +174,13 @@ def getLayoutFormated():
                                                                                 id="activationfunction_text",
                                                                                 className="activationfunction_text",
                                                                             ),
-                                                                            Div(
-                                                                                children=[],
-                                                                                id="activationfunction_box",
-                                                                                className="activationfunction_box",
+                                                                            Dropdown(
+                                                                                options=[
+                                                                                    "Adicione Opções ao código"
+                                                                                ],
+                                                                                value="Adicione Opções ao código",
+                                                                                className="activationfunction_dropdown_dash",
+                                                                                id="activationfunction_dropdown_dash_INPUT",
                                                                             ),
                                                                         ],
                                                                         id="arg4",
@@ -244,37 +250,44 @@ def getLayoutFormated():
                                                     ),
                                                     Div(
                                                         children=[
-                                                            Upload(
-                                                                children=[
-                                                                    Button(
-                                                                        children=[
-                                                                            Div(
-                                                                                children=[
-                                                                                    "Selecionar Tabela"
-                                                                                ],
-                                                                                id="select_table_text",
-                                                                                className="select_table_text",
-                                                                            )
-                                                                        ],
-                                                                        id="select_button_dash_BUTTON",
-                                                                        className="select_button_dash",
-                                                                    )
-                                                                ],
-                                                                id="upload_but_box_UPLOAD",
-                                                                className="upload_but_box",
-                                                            ),
-                                                            Upload(
+                                                            Div(
                                                                 children=[
                                                                     Upload(
+                                                                        children=[
+                                                                            Button(
+                                                                                children=[
+                                                                                    Div(
+                                                                                        children=[
+                                                                                            "Selecionar Tabela"
+                                                                                        ],
+                                                                                        id="select_table_text",
+                                                                                        className="select_table_text",
+                                                                                    )
+                                                                                ],
+                                                                                id="select_button_dash_BUTTON",
+                                                                                className="select_button_dash",
+                                                                            )
+                                                                        ],
+                                                                        id="senddata_upload_dash_UPLOAD",
+                                                                        className="senddata_upload_dash",
+                                                                        multiple=True,
+                                                                    )
+                                                                ],
+                                                                id="upload_but_box",
+                                                                className="upload_but_box",
+                                                            ),
+                                                            Div(
+                                                                children=[
+                                                                    Div(
                                                                         children=[
                                                                             "tabela.csv",
                                                                             Div([]),
                                                                         ],
-                                                                        id="datauploaded_name_UPLOAD",
+                                                                        id="datauploaded_name",
                                                                         className="datauploaded_name",
                                                                     )
                                                                 ],
-                                                                id="datauploaded_name_box_UPLOAD",
+                                                                id="datauploaded_name_box",
                                                                 className="datauploaded_name_box",
                                                             ),
                                                         ],
@@ -298,20 +311,41 @@ def getLayoutFormated():
                                             ),
                                             Div(
                                                 children=[
+                                                    Tabs(
+                                                        children=[
+                                                            Tab(
+                                                                children=[],
+                                                                className="table_tab_dash",
+                                                                label="table_tab_dash",
+                                                                value="table_tab_dash_TAB",
+                                                            ),
+                                                            Tab(
+                                                                children=[],
+                                                                className="input_graph_tab_dash",
+                                                                label="input_graph_tab_dash",
+                                                                value="input_graph_tab_dash_TAB",
+                                                            ),
+                                                            Tab(
+                                                                children=[],
+                                                                className="erro_graph_tab_dash",
+                                                                label="erro_graph_tab_dash",
+                                                                value="erro_graph_tab_dash_TAB",
+                                                            ),
+                                                            Tab(
+                                                                children=[],
+                                                                className="pred_graph_tab_dash",
+                                                                label="pred_graph_tab_dash",
+                                                                value="pred_graph_tab_dash_TAB",
+                                                            ),
+                                                        ],
+                                                        id="visualization_tabs_dash_TABS",
+                                                        className="visualization_tabs_dash",
+                                                        value="table_tab_dash_TAB",
+                                                    ),
                                                     Div(
                                                         children=[],
                                                         id="visualization_box_1",
                                                         className="visualization_box_1",
-                                                    ),
-                                                    Div(
-                                                        children=[],
-                                                        id="visualization_box_2",
-                                                        className="visualization_box_2",
-                                                    ),
-                                                    Div(
-                                                        children=[],
-                                                        id="visualization_box_3",
-                                                        className="visualization_box_3",
                                                     ),
                                                 ],
                                                 id="visualization",

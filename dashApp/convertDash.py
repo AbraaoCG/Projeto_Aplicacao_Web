@@ -32,19 +32,25 @@ def parse_html(tag):
     if(len(tag_class) > 0):
         if tag_name == 'img':        
             tag_src = tag.get('src', [])
-            component =html.Img(className=class_value, src=f'./assets/{tag_src}')
+            component =html.Img(className=class_value, src=f'./assets/imgs/{tag_src}')
             return component
         elif 'button_dash' in class_value:
             component = html.Button(className = class_value,id = f'{id_value}_BUTTON', children = children)
             return component
         elif 'tabs_dash' in class_value:
-            component = dcc.Tabs(className = class_value ,id = f'{id_value}_TABS' , children = children)
+            component = dcc.Tabs(className = class_value ,id = f'{id_value}_TABS' ,value='YOUR_DEFAULT_TAB_VALUE',children = children)
             return component
         elif 'tab_dash' in class_value:
-            component = dcc.Tab(className = class_value,label=tag_class[0], id = f'{id_value}_TAB' , children = children)
+            component = dcc.Tab(className = class_value,label=tag_class[0], value = f'{id_value}_TAB' , children = children)
             return component
-        elif 'upload' in class_value:
-            component = dcc.Upload(className = class_value, id = f'{id_value}_UPLOAD' , children = children)
+        elif 'upload_dash' in class_value:
+            component = dcc.Upload(className = class_value, id = f'{id_value}_UPLOAD' ,multiple=True, children = children)
+            return component
+        elif 'input_dash' in class_value:
+            component = dcc.Input(className = class_value, id = f'{id_value}_INPUT' , type = "number", placeholder = "")
+            return component
+        elif 'dropdown_dash' in class_value:
+            component = dcc.Dropdown(options = ["Adicione Opções ao código"],value = "Adicione Opções ao código", className = class_value, id = f'{id_value}_INPUT' )
             return component
 
     if class_value:
@@ -68,7 +74,7 @@ def writeLayout(InputFilename, OutPutFilename):
     dash_code = parse_html_file(html_str)
 
     # Preparação para arquivo de saida
-    importStr = """from dash.html import Div , Button, Img \nfrom dash.dcc import Tabs,Tab,Input,Upload\n\n"""
+    importStr = """from dash.html import Div , Button, Img \nfrom dash.dcc import Tabs,Tab,Input,Upload,Store,Dropdown\n\n"""
     # Escrever python de saída com função para retornar estrutura.
     with open(OutPutFilename, "w", encoding='utf-8') as f:
         f.write(importStr)

@@ -17,7 +17,7 @@ from dash.html import Div, Button, Img
 from dash_core_components import Upload,Tab,Tabs
 
 from assets.dashCode import getLayoutFormated
-from assets.convertDash import writeLayout,getLayoutRaw
+from dashApp.convertDash import writeLayout,getLayoutRaw
 
 
 df2 = pd.read_csv(

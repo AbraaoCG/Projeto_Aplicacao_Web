@@ -32,10 +32,6 @@ app.layout = init_layout2(appServer)
 
 
 
-
-
-
-
 def parse_contents(contents, filename, date):
     content_type, content_string = contents.split(',')
     decoded = base64.b64decode(content_string)
@@ -137,11 +133,11 @@ def runML_andPlot(inputData,file_path):
 
 
 # CallBack para receber uploads e prepará-los para ML.
-@app.callback(Output('Selected-file-name', 'children'),
+@app.callback(Output('datauploaded_name_box', 'children'),
               Output('dataML_Results','data'),
-              [Input('upload-table', 'contents')],
-              [State('upload-table', 'filename'),
-               State('upload-table', 'last_modified')])
+              [Input('senddata_upload_dash_UPLOAD', 'contents')],
+              [State('senddata_upload_dash_UPLOAD', 'filename'),
+               State('senddata_upload_dash_UPLOAD', 'last_modified')])
 
 def update_output(list_of_contents, list_of_names, list_of_dates):
     if list_of_contents is not None:
@@ -174,49 +170,53 @@ def update_output(list_of_contents, list_of_names, list_of_dates):
         contTables = 0
         for name in list_of_names:
             contTables += 1
-            nameDivs.append(html.Div(f'Tabela {contTables}: '+ name ,className='my-dashboard3'))  
-        print('BBBBBBBBBBBBBBBB')
+            nameDivs.append(html.Div(f'Tabela {contTables}: '+ name ,className='datauploaded_name'))  
         return nameDivs,df_dict
     else:
-        return html.Div('Nenhum arquivo selecionado', className= 'my-dashboard3'),{}
+        return html.Div('Nenhum arquivo selecionado', className= 'datauploaded_name'),{}
 
 
 # CallBack para Realizar o ML e retornar gráficos em função da Tab.
-@app.callback(Output(component_id= 'Tabs-Output1',component_property='children'),
-              Input(component_id= 'Visualization-Tabs',component_property='value'),
+@app.callback(Output(component_id= 'visualization_box_1',component_property='children'),
+              Input(component_id= 'visualization_tabs_dash_TABS',component_property='value'),
               Input('dataML_Results', 'data'),
-              State('upload-table', 'filename')
+              State('senddata_upload_dash_UPLOAD', 'filename')
               )
 
 def render_Graph(tab,df_dict,filenames):
+    
     if(filenames) is not None:
-        filename1 = filenames[0]
+        #filename1 = filenames[0]
         #print(df_dict[filename1]['dataTable'])
         #divChildren = []
-        if  ( tab == 'InputData-Table'):
-            dataDF = pd.DataFrame.from_dict(df_dict[filename1]['dataTable'])
-            return dash_table.DataTable(
-                data = df_dict[filename1]['dataTable'] , 
-                columns = [ {"name": i,"id": i} for i in dataDF.columns ],
-                page_size=10,
-                style_data={
-                    'backgroundColor': 'rgba(0, 0, 0, 0.3)',
-                    'color': 'white',
-                    'fontSize': 16
-                }
+        if  ( tab == 'table_tab_dash_TAB'):
+            children = []
+            for filename1 in filenames:
+                dataDF = pd.DataFrame.from_dict(df_dict[filename1]['dataTable'])
+                children.append(dash_table.DataTable(
+                    data=df_dict[filename1]['dataTable'],
+                    columns=[{"name": i, "id": i} for i in dataDF.columns],
+                    page_size=15,
+                    style_data={
+                        'backgroundColor': 'rgba(0, 0, 0, 0.3)',
+                        'color': 'white',
+                        'fontSize': 22
+                    }
                 )
-            
-        elif( tab == 'InputData-Graph'):
-            return dcc.Graph(figure=df_dict[filename1]['dataGraph'])
-        elif( tab == 'ErroEpoch-Graph'):
-            return dcc.Graph(figure=df_dict[filename1]['dataErroGraph'])
-        elif( tab == 'Prediction-Graph'):
-            return dcc.Graph(figure=df_dict[filename1]['dataPredictGraph'])
-        #print(divChildren)
-        #return html.Div(children=divChildren)
-
-# @app.callback(Input('initialize-session'))
-
-# def initializeSessionPath():
-
-# @app.server.route('/dash/',methods=["GET", "POST"])
+                )
+            return children
+        elif( tab == 'input_graph_tab_dash_TAB'):
+            children = []
+            for filename1 in filenames:
+                children.append(dcc.Graph(figure=df_dict[filename1]['dataGraph']))
+            return children
+        elif( tab == 'erro_graph_tab_dash_TAB'):
+            children = []
+            for filename1 in filenames:
+                children.append(dcc.Graph(figure=df_dict[filename1]['dataErroGraph']))
+            return children
+        elif( tab == 'pred_graph_tab_dash_TAB'):
+            children = []
+            for filename1 in filenames:
+                children.append(dcc.Graph(figure=df_dict[filename1]['dataPredictGraph']))
+            return children
